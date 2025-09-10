@@ -1,4 +1,4 @@
-# NEWWORK HR Take Home Assignment
+# NEWWORK Take Home Assignment
 
 Single page app built with React, Vite and Tailwind. It demonstrates role-based access to an employee profile, peer feedback with AI polishing, and absence requests.
 
@@ -15,15 +15,17 @@ Single page app built with React, Vite and Tailwind. It demonstrates role-based 
    ```
 
 This demo uses in-memory to save changes made to data. 
-Replace functions in `src/api.ts` with real backend endpoints. The `polishFeedback` function should call a backend route that proxies a HuggingFace text model for free-tier usage.
 
 ## Architecture notes
 
-- Vite React TypeScript for speed and DX
+- Vite with React and TypeScript for speed and developer experience
 - Tailwind for utility-first styling
-- Simple session stored role for access control
-- API layer isolated in `src/api` to swap mocks for real endpoints
-
+- OpenAI via Huggingface to refine feedback into a professional tone
+- React Hook Form for minimal re-renders and efficient form handling
+- Session-stored role for simple access control
+- Route-based layout component for centralized screen management
+- API layer isolated in src/api to swap between mocks and real endpoints
+- env was intentionally added to git just for the demo purpose 
 
 ## Routes
     - `/login` - To pick a role to simulate
@@ -32,9 +34,9 @@ Replace functions in `src/api.ts` with real backend endpoints. The `polishFeedba
 
 ## Next steps with more time
 
-- Add the backend service to handle APIs 
-- Add real authentication and sessions
-- Add a backend route that is proxy to HuggingFace Inference API for more secure integration 
-- Handle error from APIs / third-party
-- Add tests with Vitest and React Testing Library
-- Add manager views to review and approve absences
+- Implement a backend service to handle APIs
+- Add real authentication and session management
+- Create a backend route as a proxy to the HuggingFace Inference API for secure integration
+- Handle errors from APIs and third-party services
+- Add tests using Vitest and React Testing Library
+- Develop manager view for approving absences
