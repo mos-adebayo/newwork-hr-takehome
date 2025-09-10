@@ -2,9 +2,13 @@
 
 Single page app built with React, Vite and Tailwind. It demonstrates role-based access to an employee profile, peer feedback with AI polishing, and absence requests.
 
+## Create ENV variable
+Ensure to create `.env.development` using `.env.sample` file as a reference.
+(This could not be avoided for this demo because HuggingFace invalidates token if it is accessible publicly.)
+
 ## Run locally
 
-1. Ensure Node 18 or newer.
+1. Ensure Node 20.19+ or newer.
 2. Install dependencies
    ```sh
    npm install
@@ -25,7 +29,7 @@ This demo uses in-memory to save changes made to data.
 - Session-stored role for simple access control
 - Route-based layout component for centralized screen management
 - API layer isolated in src/api to swap between mocks and real endpoints
-- env was intentionally added to git just for the demo purpose 
+- Hugging face token will be shared in email
 
 ## Routes
     - `/login` - To pick a role to simulate
