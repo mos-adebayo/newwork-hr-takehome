@@ -17,8 +17,23 @@ type Props = {
 };
 
 const schema: ObjectSchema<AbsenceFormValues> = object({
-  startDate: string().required("Start date is required"),
-  endDate: string().required("End date is required"),
+  startDate: string()
+    .required("Start date is required")
+    .test(
+      "is-future",
+      "Start date must be in the future",
+      (value) => !!value && new Date(value) > new Date(),
+    ),
+  endDate: string()
+    .required("End date is required")
+    .test(
+      "is-after-start",
+      "End date must be after start date",
+      function (value) {
+        const { startDate } = this.parent;
+        return !!value && !!startDate && new Date(value) > new Date(startDate);
+      },
+    ),
   reason: string().required("Reason is required"),
 });
 
@@ -45,6 +60,8 @@ export const AbsenceRequestForm = ({ onCompleted }: Props) => {
     setPending(false);
   };
 
+  const formErrors = methods.formState.errors;
+
   return (
     <FormProvider {...methods}>
       <form
@@ -56,20 +73,43 @@ export const AbsenceRequestForm = ({ onCompleted }: Props) => {
           name="startDate"
           control={methods.control}
           render={({ field }) => (
-            <InputField label="Start date" field={field} type="date" />
+            <div className="grid gap-1">
+              <InputField label="Start date" field={field} type="date" />
+              {formErrors.startDate && (
+                <p className="text-xs text-red-500">
+                  {formErrors.startDate.message}
+                </p>
+              )}
+            </div>
           )}
         />
         <Controller
           name="endDate"
           control={methods.control}
           render={({ field }) => (
-            <InputField label="End date" field={field} type="date" />
+            <div className="grid gap-1">
+              <InputField label="End date" field={field} type="date" />
+              {formErrors.endDate && (
+                <p className="text-xs text-red-500">
+                  {formErrors.endDate.message}
+                </p>
+              )}
+            </div>
           )}
         />
         <Controller
           name="reason"
           control={methods.control}
-          render={({ field }) => <TextareaField label="Reason" field={field} />}
+          render={({ field }) => (
+            <div className="grid gap-1">
+              <TextareaField label="Reason" field={field} />
+              {formErrors.reason && (
+                <p className="text-xs text-red-500">
+                  {formErrors.reason.message}
+                </p>
+              )}
+            </div>
+          )}
         />
 
         <button

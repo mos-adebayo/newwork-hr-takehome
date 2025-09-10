@@ -17,7 +17,7 @@ type Props = {
 
 const schema: ObjectSchema<EmployeeFormValues> = object({
   name: string().required("Name is required"),
-  email: string().required("Email is required"),
+  email: string().email("Enter a valid email").required("Email is required"),
   phone: string(),
   address: string(),
   department: string(),
@@ -50,6 +50,8 @@ export const ProfileForm = ({ profile, onCompleted, onCancel }: Props) => {
     setPending(false);
   };
 
+  const formErrors = methods.formState.errors;
+
   return (
     <FormProvider {...methods}>
       <form
@@ -60,30 +62,71 @@ export const ProfileForm = ({ profile, onCompleted, onCancel }: Props) => {
         <Controller
           name="name"
           control={methods.control}
-          render={({ field }) => <InputField label="Name" field={field} />}
+          render={({ field }) => (
+            <div className="grid gap-1">
+              <InputField label="Name" field={field} />
+              {formErrors.name && (
+                <p className="text-xs text-red-500">
+                  {formErrors.name.message}
+                </p>
+              )}
+            </div>
+          )}
         />
         <Controller
           name="email"
           control={methods.control}
-          render={({ field }) => <InputField label="Email" field={field} />}
+          render={({ field }) => (
+            <div className="grid gap-1">
+              <InputField label="Email" field={field} />
+              {formErrors.email && (
+                <p className="text-xs text-red-500">
+                  {formErrors.email.message}
+                </p>
+              )}
+            </div>
+          )}
         />
         <Controller
           name="title"
           control={methods.control}
-          render={({ field }) => <InputField label="Title" field={field} />}
+          render={({ field }) => (
+            <div className="grid gap-1">
+              <InputField label="Title" field={field} />
+              {formErrors.title && (
+                <p className="text-xs text-red-500">
+                  {formErrors.title.message}
+                </p>
+              )}
+            </div>
+          )}
         />
         <Controller
           name="department"
           control={methods.control}
           render={({ field }) => (
-            <InputField label="Department" field={field} />
+            <div className="grid gap-1">
+              <InputField label="Department" field={field} />
+              {formErrors.department && (
+                <p className="text-xs text-red-500">
+                  {formErrors.department.message}
+                </p>
+              )}
+            </div>
           )}
         />
         <Controller
           name="phone"
           control={methods.control}
           render={({ field }) => (
-            <InputField label="Phone Number" field={field} />
+            <div className="grid gap-1">
+              <InputField label="Phone Number" field={field} />
+              {formErrors.phone && (
+                <p className="text-xs text-red-500">
+                  {formErrors.phone.message}
+                </p>
+              )}
+            </div>
           )}
         />
 
@@ -91,21 +134,47 @@ export const ProfileForm = ({ profile, onCompleted, onCancel }: Props) => {
           <Controller
             name="salary"
             control={methods.control}
-            render={({ field }) => <InputField label="Salary" field={field} />}
+            render={({ field }) => (
+              <div className="grid gap-1">
+                <InputField label="Salary" field={field} />
+                {formErrors.salary && (
+                  <p className="text-xs text-red-500">
+                    {formErrors.salary.message}
+                  </p>
+                )}
+              </div>
+            )}
           />
         </RoleGate>
 
         <Controller
           name="ssn"
           control={methods.control}
-          render={({ field }) => <InputField label="SSN" field={field} />}
+          render={({ field }) => (
+            <div className="grid gap-1">
+              <InputField label="SSN" field={field} />
+              {formErrors.ssn && (
+                <p className="text-xs text-red-500">{formErrors.ssn.message}</p>
+              )}
+            </div>
+          )}
         />
 
         <Controller
           name="address"
           control={methods.control}
-          render={({ field }) => <InputField label="Address" field={field} />}
+          render={({ field }) => (
+            <div className="grid gap-1">
+              <InputField label="Address" field={field} />
+              {formErrors.address && (
+                <p className="text-xs text-red-500">
+                  {formErrors.address.message}
+                </p>
+              )}
+            </div>
+          )}
         />
+
         <div className="flex gap-2">
           <button
             disabled={pending}

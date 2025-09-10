@@ -19,13 +19,15 @@ const Absences = () => {
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      <section className="rounded-2xl border bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-semibold">Request Absence</h2>
+      <RoleGate allow={[EMPLOYEE]}>
+        <section className="rounded-2xl border bg-white p-5 shadow-sm">
+          <h2 className="mb-4 text-lg font-semibold">Request Absence</h2>
 
-        <RoleGate allow={[EMPLOYEE]}>
-          <AbsenceRequestForm onCompleted={handleOnSaved} />
-        </RoleGate>
-      </section>
+          <RoleGate allow={[EMPLOYEE]}>
+            <AbsenceRequestForm onCompleted={handleOnSaved} />
+          </RoleGate>
+        </section>
+      </RoleGate>
 
       <section className="rounded-2xl border bg-white p-5 shadow-sm">
         <h2 className="mb-4 text-lg font-semibold">My requests</h2>
