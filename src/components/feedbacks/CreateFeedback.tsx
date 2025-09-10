@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addFeedback, polishFeedback } from "../../api.ts";
+import { addFeedback, polishFeedback } from "../../utils/api.ts";
 import type { Feedback } from "../../types/feedback.ts";
 
 type Props = {
@@ -23,27 +23,30 @@ export const CreateFeedback = ({ onCompleted }: Props) => {
   }
 
   return (
-    <div className="mb-3 flex gap-2">
-      <input
+    <div className="grid gap-2 text-sm mb-3">
+      <textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring"
         placeholder="Share constructive feedback"
       />
-      <button
-        className="rounded-lg border px-3 py-2 text-sm hover:bg-gray-50"
-        onClick={() => addFb(false)}
-      >
-        Post
-      </button>
-      <button
-        className="rounded-lg border px-3 py-2 text-sm hover:bg-gray-50 disabled:opacity-50"
-        onClick={() => addFb(true)}
-        disabled={polishing}
-        title="Uses AI polish"
-      >
-        {polishing ? "Polishing..." : "Polish and post"}
-      </button>
+
+      <div className="flex gap-2">
+        <button
+          className="rounded-lg border px-5 py-2 text-sm bg-black text-white hover:bg-gray-800"
+          onClick={() => addFb(false)}
+        >
+          Post
+        </button>
+        <button
+          className="rounded-lg border px-3 py-2 text-sm hover:bg-gray-50 disabled:opacity-50"
+          onClick={() => addFb(true)}
+          disabled={polishing}
+          title="Uses AI polish"
+        >
+          {polishing ? "Polishing..." : "Polish and post"}
+        </button>
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import type { SubmitHandler } from "react-hook-form";
 import type { Employee, EmployeeFormValues } from "../../types/employee.ts";
 import { ObjectSchema, object, string, number } from "yup";
 import { InputField } from "../form-field/InputField.tsx";
-import { updateEmployee } from "../../api.ts";
+import { updateEmployee } from "../../utils/api.ts";
 import { RoleGate } from "../role-gate/RoleGate.tsx";
 import { MANAGER } from "../../utils/constant.ts";
 
@@ -106,16 +106,16 @@ export const ProfileForm = ({ profile, onCompleted, onCancel }: Props) => {
           control={methods.control}
           render={({ field }) => <InputField label="Address" field={field} />}
         />
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           <button
             disabled={pending}
-            className="rounded-lg border px-4 py-2 text-sm hover:bg-gray-50 disabled:opacity-50"
+            className="rounded-lg border px-5 py-2 text-sm bg-black text-white hover:bg-gray-800"
           >
             {pending ? "Saving..." : "Save"}
           </button>
           <button
             type="button"
-            className="text-sm underline"
+            className="rounded-lg border px-4 py-2 text-sm hover:bg-gray-50 disabled:opacity-50"
             onClick={onCancel}
           >
             Cancel

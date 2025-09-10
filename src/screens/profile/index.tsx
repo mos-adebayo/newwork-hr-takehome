@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { CO_WORKER, EMPLOYEE, MANAGER } from "../../utils/constant.ts";
 import { ProfileForm } from "../../components/profile-form";
 import type { Employee } from "../../types/employee.ts";
-import { fetchEmployee, listFeedback } from "../../api.ts";
+import { fetchEmployee, listFeedback } from "../../utils/api.ts";
 import type { Feedback } from "../../types/feedback.ts";
 import { canViewSensitiveData } from "../../utils/auth.ts";
 import { Feedbacks } from "../../components/feedbacks";
