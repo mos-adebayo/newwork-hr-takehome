@@ -1,8 +1,19 @@
 import Header from "../header";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { getSession } from "../../lib/auth.ts";
 
 const AppLayout = () => {
-  return (
+  const session = getSession();
+  const nav = useNavigate();
+
+  useEffect(() => {
+    if (!session) {
+      nav("/login");
+    }
+  }, [nav, session]);
+
+  return session ? (
     <div className="min-h-screen">
       <Header />
 
@@ -10,7 +21,7 @@ const AppLayout = () => {
         <Outlet />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 export default AppLayout;
