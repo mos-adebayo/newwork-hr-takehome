@@ -8,7 +8,7 @@ import {
 } from "react-hook-form";
 import { object, ObjectSchema, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { submitAbsence } from "../../utils/api.ts";
+import { submitAbsence } from "../../api/absence.ts";
 import { InputField } from "../form-field/InputField.tsx";
 import { TextareaField } from "../form-field/Textarea.tsx";
 

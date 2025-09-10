@@ -1,7 +1,7 @@
 import { AbsenceRequests } from "../../components/absence-requests";
 import { useState, useEffect } from "react";
 import type { AbsenceRequest } from "../../types/absence.ts";
-import { listAbsences } from "../../utils/api.ts";
+import { listAbsences } from "../../api/absence.ts";
 import { AbsenceRequestForm } from "../../components/absence-requests/AbsenceRequestForm.tsx";
 import { RoleGate } from "../../components/role-gate/RoleGate.tsx";
 import { EMPLOYEE } from "../../utils/constant.ts";

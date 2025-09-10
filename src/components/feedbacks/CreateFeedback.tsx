@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addFeedback, polishFeedback } from "../../utils/api.ts";
+import { addFeedback, polishFeedback } from "../../api/feedback";
 import type { Feedback } from "../../types/feedback.ts";
 
 type Props = {

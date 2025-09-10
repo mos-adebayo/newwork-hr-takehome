@@ -5,7 +5,7 @@ import type { SubmitHandler } from "react-hook-form";
 import type { Employee, EmployeeFormValues } from "../../types/employee.ts";
 import { ObjectSchema, object, string, number } from "yup";
 import { InputField } from "../form-field/InputField.tsx";
-import { updateEmployee } from "../../utils/api.ts";
+import { updateEmployee } from "../../api/employee.ts";
 import { RoleGate } from "../role-gate/RoleGate.tsx";
 import { MANAGER } from "../../utils/constant.ts";
 
