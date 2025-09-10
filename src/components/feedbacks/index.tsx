@@ -12,7 +12,7 @@ export const Feedbacks = ({ data }: Props) => {
             <span>{f.author}</span>
             <time>{new Date(f.createdAt).toLocaleString()}</time>
           </div>
-          <p>{f.message}</p>
+          <p className="first-letter:uppercase">{f.message}</p>
           {f.polished && (
             <span className="mt-1 inline-block text-xs text-green-700">
               Polished

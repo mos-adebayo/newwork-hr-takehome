@@ -95,7 +95,7 @@ function ProfileDataRow({
   return (
     <div className="grid grid-cols-3 gap-2">
       <div className="text-gray-600">{label}</div>
-      <div className="col-span-2">{value || "—"}</div>
+      <div className="col-span-2 first-letter:uppercase">{value || "—"}</div>
     </div>
   );
 }

@@ -36,7 +36,7 @@ export const ProfileForm = ({ profile, onCompleted, onCancel }: Props) => {
       email: profile?.email || "",
       phone: profile?.phone || "",
       address: profile?.address || "",
-      department: profile?.address,
+      department: profile?.department,
       title: profile?.title,
       salary: profile?.salary,
       ssn: profile?.ssn,
